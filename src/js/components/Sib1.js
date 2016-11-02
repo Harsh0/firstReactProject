@@ -6,6 +6,7 @@ var Com = React.createClass({
       <div>
       <p>Welcome {this.props.fname} {this.props.lname}</p>
       <Gc />
+      
       </div>
     )
   }

@@ -20765,15 +20765,23 @@ var Com = React.createClass({displayName: "Com",
       fname1 : "First Name"
     };
   },
+  getInitialState : function(){
+    return {
+      sData : 0
+    }
+  },
+  clickedBut:function(nD){
+    this.setState({sData:this.state.sData+nD});
+  },
   render:function(){
     return (
       React.createElement("div", null, 
-      React.createElement(Si1, {fname: this.props.fname, lname: "Singhal"}), 
-	     React.createElement(Si2, {temp: this.props.fname1})
+      React.createElement(Si1, {fname: this.props.fname, lname: this.state.sData}), 
+	     React.createElement(Si2, {temp: this.props.fname1, clickedHandler: this.clickedBut})
       )
     )
   }
-})
+});
 module.exports = Com;
 },{"./Sib1":173,"./Sib2":174,"react":171}],173:[function(require,module,exports){
 var React = require('react');
@@ -20784,6 +20792,7 @@ var Com = React.createClass({displayName: "Com",
       React.createElement("div", null, 
       React.createElement("p", null, "Welcome ", this.props.fname, " ", this.props.lname), 
       React.createElement(Gc, null)
+      
       )
     )
   }
@@ -20796,7 +20805,9 @@ var Com = React.createClass({displayName: "Com",
     return (
       React.createElement("div", null, 
       React.createElement("p", null, "Hello from Sibling 2"), 
-      React.createElement("p", null, this.props.temp)
+      React.createElement("p", null, this.props.temp), 
+      React.createElement("button", {onClick: this.props.clickedHandler.bind(null,5)}, "click to add 5"), " ", React.createElement("br", null), 
+      React.createElement("input", {type: "button", onClick: this.props.clickedHandler.bind(null,10), value: "clickToAdd10"})
       )
     )
   }
@@ -20823,7 +20834,7 @@ var MainComponent = React.createClass({displayName: "MainComponent",
     return (
       React.createElement("div", null, 
         React.createElement("h3", null, "Hello from React"), 
-        React.createElement(Comm, {fname: "Harsh"})
+        React.createElement(Comm, {fname: "Harsh", fname1: "Second"})
       )
     )
   }

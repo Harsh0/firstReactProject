@@ -6,7 +6,7 @@ var MainComponent = React.createClass({
     return (
       <div>
         <h3>Hello from React</h3>
-        <Comm fname="Harsh"/>
+        <Comm fname="Harsh" fname1="Second"/>
       </div>
     )
   }
