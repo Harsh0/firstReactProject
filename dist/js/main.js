@@ -20760,11 +20760,16 @@ var React = require('react');
 var Si1 = require("./Sib1");
 var Si2 = require("./Sib2");
 var Com = React.createClass({displayName: "Com",
+  getDefaultProps: function(){
+    return {
+      fname1 : "First Name"
+    };
+  },
   render:function(){
     return (
       React.createElement("div", null, 
       React.createElement(Si1, {fname: this.props.fname, lname: "Singhal"}), 
-	     React.createElement(Si2, null)
+	     React.createElement(Si2, {temp: this.props.fname1})
       )
     )
   }
@@ -20772,29 +20777,44 @@ var Com = React.createClass({displayName: "Com",
 module.exports = Com;
 },{"./Sib1":173,"./Sib2":174,"react":171}],173:[function(require,module,exports){
 var React = require('react');
+var Gc = require('./grandChild');
 var Com = React.createClass({displayName: "Com",
   render:function(){
     return (
       React.createElement("div", null, 
-      React.createElement("p", null, "Welcome ", this.props.fname, " ", this.props.lname)
+      React.createElement("p", null, "Welcome ", this.props.fname, " ", this.props.lname), 
+      React.createElement(Gc, null)
       )
     )
   }
-})
+});
 module.exports = Com;
-},{"react":171}],174:[function(require,module,exports){
+},{"./grandChild":175,"react":171}],174:[function(require,module,exports){
 var React = require('react');
 var Com = React.createClass({displayName: "Com",
   render:function(){
     return (
       React.createElement("div", null, 
-      React.createElement("p", null, "Hello from Sibling 2")
+      React.createElement("p", null, "Hello from Sibling 2"), 
+      React.createElement("p", null, this.props.temp)
       )
     )
   }
 })
 module.exports = Com;
 },{"react":171}],175:[function(require,module,exports){
+var React = require('react');
+var grandChild = React.createClass({displayName: "grandChild",
+  render:function(){
+    return (
+      React.createElement("div", null, 
+      React.createElement("p", null, "Welcome from grandChildren")
+      )
+    )
+  }
+})
+module.exports = grandChild;
+},{"react":171}],176:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Comm = require('./Components/Com');
@@ -20810,4 +20830,4 @@ var MainComponent = React.createClass({displayName: "MainComponent",
 });
 ReactDOM.render(React.createElement(MainComponent, null),
 document.getElementById('app'));
-},{"./Components/Com":172,"react":171,"react-dom":28}]},{},[175]);
+},{"./Components/Com":172,"react":171,"react-dom":28}]},{},[176]);

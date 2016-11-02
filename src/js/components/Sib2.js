@@ -4,6 +4,7 @@ var Com = React.createClass({
     return (
       <div>
       <p>Hello from Sibling 2</p>
+      <p>{this.props.temp}</p>
       </div>
     )
   }
